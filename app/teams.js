@@ -3,7 +3,7 @@ import ApiClient from './api-client'
 class Teams extends ApiClient {
 
   getTeams() {
-    return this.client.get(`/teams`)
+    return this.client.get('/teams')
   }
 
   getGroups(domain) {

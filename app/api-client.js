@@ -3,7 +3,7 @@ import constants from './constants'
 
 class ApiClient {
 
-  constructor(token, version = 1, timeout = 1000) {
+  constructor(token, version, timeout) {
     this.token = token
     this.version = version
     this.setClient(timeout)
