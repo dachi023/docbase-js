@@ -7,14 +7,15 @@ DocBase API client for browser and node
 $ npm install --save docbase-js
 ```
 
-## Call API
+## Example
 Using [mzabriskie/axios](https://github.com/mzabriskie/axios)
 
 ### Teams
 ```js
-var teams = new docbase.Teams(':your-token');
+var DocBase = require('docbase-js');
+var docBase = new DocBase(':your-token');
 
-teams.getTeams()
+docBase.teams.getTeams()
   .then(function(response) {
     console.log(response.data);
   })
@@ -22,7 +23,7 @@ teams.getTeams()
     console.log(reponse);
   });
 
-teams.getGroups(':your-domain')
+docBase.teams.getGroups(':your-domain')
   .then(function(response) {
     console.log(response.data);
   })
@@ -30,7 +31,7 @@ teams.getGroups(':your-domain')
     console.log(reponse);
   });
 
-teams.getTags(':your-domain')
+docBase.teams.getTags(':your-domain')
   .then(function(response) {
     console.log(response.data);
   })
