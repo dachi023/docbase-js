@@ -13,9 +13,10 @@ fs.readdirSync('node_modules').filter(function(x) {
 
 module.exports = {
   target: 'node',
+  devtool: '#inline-source-map',
   externals: nodeModules,
   entry: {
-    bundle: path.join(__dirname, 'app', 'index.js')
+    'docbase-client': path.join(__dirname, 'app', 'index.js')
   },
   output: {
     path: path.join(__dirname, 'dist'),
