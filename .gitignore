@@ -13,3 +13,7 @@ node_modules
 
 # Optional npm cache directory
 .npm
+
+# Build directory
+dist
+lib
