@@ -2,11 +2,12 @@
   "name": "docbase-js",
   "version": "0.0.1",
   "description": "DocBase API client",
-  "main": "dist/docbase-client.js",
+  "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --progress --colors",
-    "lint": "eslint app/ -c .eslintrc"
+    "lint": "eslint app/ -c .eslintrc",
+    "prepublish": "$(npm bin)/babel app --out-dir lib --sourcemaps && $(npm bin)/webpack"
   },
   "repository": {
     "type": "git",

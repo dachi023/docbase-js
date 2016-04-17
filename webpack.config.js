@@ -16,7 +16,7 @@ module.exports = {
   devtool: '#inline-source-map',
   externals: nodeModules,
   entry: {
-    'docbase-client': path.join(__dirname, 'app', 'index.js')
+    'docbase': path.join(__dirname, 'app', 'index.js')
   },
   output: {
     path: path.join(__dirname, 'dist'),
