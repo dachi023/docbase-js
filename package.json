@@ -5,9 +5,10 @@
   "main": "lib/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack --progress --colors",
+    "babel": "$(npm bin)/babel app --out-dir lib --sourcemaps",
+    "build": "$(npm bin)/webpack --progress --colors",
     "lint": "eslint app/ -c .eslintrc",
-    "prepublish": "$(npm bin)/babel app --out-dir lib --sourcemaps && $(npm bin)/webpack"
+    "prepublish": "npm run babel && npm run build"
   },
   "repository": {
     "type": "git",
