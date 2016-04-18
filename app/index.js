@@ -1,13 +1,15 @@
-import constants from './constants'
 import Teams from './teams'
+import constants from './constants'
 
 export {
   Teams
 }
 
-export default class DocBase {
+class DocBase {
 
-  constructor(token, version = constants.version, timeout = constants.timeout) {
-    this.teams = new Teams(token, version, timeout)
+  constructor({domain, token, baseUrl = constants.baseUrl, timeout = constants.timeout, version = constants.version}) {
+    this.teams = new Teams({domain, token, baseUrl, timeout, version})
   }
 }
+
+export default DocBase

@@ -1,22 +1,26 @@
 import axios from 'axios'
-import constants from './constants'
 
 class ApiClient {
 
-  constructor(token, version, timeout) {
+  constructor({token, baseUrl, timeout, version}) {
     this.token = token
+    this.baseUrl = baseUrl
+    this.timeout = timeout
     this.version = version
-    this.setClient(timeout)
+
+    this.setAxios()
   }
 
-  setClient(timeout) {
-    const baseURL = constants.baseURL
-    const headers = {
-      'Content-Type': 'application/json; charset=utf-8',
-      'X-DocBaseToken': this.token,
-      'X-Api-Version': this.version
-    }
-    this.client = axios.create({baseURL, timeout, headers})
+  setAxios() {
+    this.axios = axios.create({
+      baseURL: this.baseUrl,
+      headers: {
+        'Content-Type': 'application/json; charset=utf-8',
+        'X-DocBaseToken': this.token,
+        'X-Api-Version': this.version
+      },
+      timeout: this.timeout
+    })
   }
 }
 
