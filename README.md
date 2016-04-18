@@ -38,6 +38,24 @@ docBase.teams.getTags(':your-domain')
   .catch(function(response) {
     console.log(reponse);
   });
+
+docBase.teams.postMemo(
+  ':your-domain',
+  ':title',
+  ':body',
+  {
+    draft: false,
+    notice: true,
+    tags: [],
+    scope: 'everyone',
+    groups: []
+  }
+).then(function(response) {
+  console.log(response.data);
+})
+.catch(function(response) {
+  console.log(reponse);
+});
 ```
 
 ## License
