@@ -10,11 +10,14 @@ $ npm install --save docbase-js
 ## Example
 Using [mzabriskie/axios](https://github.com/mzabriskie/axios)
 
-### Teams
+### Initialize
 ```js
 var DocBase = require('docbase-js');
-var docBase = new DocBase(':your-token');
+var docBase = new DocBase({token: 'your-docbase-api-token', domain: 'your-team-domain'});
+```
 
+### Teams
+```js
 docBase.teams.getTeams()
   .then(function(response) {
     console.log(response.data);
@@ -23,7 +26,7 @@ docBase.teams.getTeams()
     console.log(reponse);
   });
 
-docBase.teams.getGroups(':your-domain')
+docBase.teams.getGroups()
   .then(function(response) {
     console.log(response.data);
   })
@@ -31,7 +34,7 @@ docBase.teams.getGroups(':your-domain')
     console.log(reponse);
   });
 
-docBase.teams.getTags(':your-domain')
+docBase.teams.getTags()
   .then(function(response) {
     console.log(response.data);
   })
@@ -39,18 +42,13 @@ docBase.teams.getTags(':your-domain')
     console.log(reponse);
   });
 
-docBase.teams.postMemo(
-  ':your-domain',
-  ':title',
-  ':body',
-  {
-    draft: false,
-    notice: true,
-    tags: [],
-    scope: 'everyone',
-    groups: []
-  }
-).then(function(response) {
+docBase.teams.postMemo('title', 'body', {
+  draft: false,
+  notice: true,
+  tags: [],
+  scope: 'everyone',
+  groups: []
+}).then(function(response) {
   console.log(response.data);
 })
 .catch(function(response) {
