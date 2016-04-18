@@ -4,5 +4,6 @@ export default {
   version: 1,
   get baseURL() {
     return `${this.protocol}://${this.host}`
-  }
+  },
+  timeout: 1000
 }

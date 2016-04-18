@@ -1,3 +1,4 @@
+import constants from './constants'
 import Teams from './teams'
 
 export {
@@ -6,7 +7,7 @@ export {
 
 export default class DocBase {
 
-  constructor(token, version = 1, timeout = 1000) {
+  constructor(token, version = constants.version, timeout = constants.timeout) {
     this.teams = new Teams(token, version, timeout)
   }
 }
