@@ -1,42 +1,33 @@
-import ApiClient from './api-client'
+import Resource from './resource'
 
-class Teams extends ApiClient {
+class Teams extends Resource {
 
+  /**
+   * find teams
+   */
   getTeams() {
-    return this.client.get('/teams')
+    return this.axios.get('/teams')
   }
 
-  getGroups(domain) {
-    return this.client.get(`/teams/${domain}/groups`)
+  /**
+   * find groups
+   */
+  getGroups() {
+    return this.axios.get(`/teams/${this.domain}/groups`)
   }
 
-  getTags(domain) {
-    return this.client.get(`/teams/${domain}/tags`)
+  /**
+   * find tags
+   */
+  getTags() {
+    return this.axios.get(`/teams/${this.domain}/tags`)
   }
 
   /**
    * post new memo
-   *
-   * options: {
-   *   draft: default false
-   *   notice: default true
-   *   tags: default []
-   *   scope: default 'everyone'
-   *   groups: default [], required when scope is 'groups'
-   * }
    */
-  postMemo(domain, title, body, options = {}) {
-    const data = {
-      title,
-      body,
-      draft: options.draft == null ? false : options.draft,
-      notice: options.notice == null ? true : options.notice,
-      tags: options.tags || [],
-      scope: options.scope || 'everyone',
-      groups: options.groups || []
-    };
-    
-    return this.client.post(`/teams/${domain}/posts`, data)
+  postMemo(title, body, {draft = false, notice = true, tags = [], scope = 'everyone', groups = []}) {
+    return this.axios.post(`/teams/${this.domain}/posts`, {title, body, draft, notice, tags, scope, groups})
   }
 }
 
