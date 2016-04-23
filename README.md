@@ -18,29 +18,23 @@ var docBase = new DocBase({token: 'your-docbase-api-token', domain: 'your-team-d
 
 ### Teams
 ```js
-docBase.teams.getTeams()
-  .then(function(response) {
-    console.log(response.data);
-  })
-  .catch(function(response) {
-    console.log(reponse);
-  });
+docBase.teams.getTeams().then(function(response) {
+  console.log(response.data);
+}).catch(function(response) {
+  console.log(reponse);
+});
 
-docBase.teams.getGroups()
-  .then(function(response) {
-    console.log(response.data);
-  })
-  .catch(function(response) {
-    console.log(reponse);
-  });
+docBase.teams.getGroups().then(function(response) {
+  console.log(response.data);
+}).catch(function(response) {
+  console.log(reponse);
+});
 
-docBase.teams.getTags()
-  .then(function(response) {
-    console.log(response.data);
-  })
-  .catch(function(response) {
-    console.log(reponse);
-  });
+docBase.teams.getTags().then(function(response) {
+  console.log(response.data);
+}).catch(function(response) {
+  console.log(reponse);
+});
 
 docBase.teams.postMemo('title', 'body', {
   draft: false,
@@ -50,8 +44,7 @@ docBase.teams.postMemo('title', 'body', {
   groups: []
 }).then(function(response) {
   console.log(response.data);
-})
-.catch(function(response) {
+}).catch(function(response) {
   console.log(reponse);
 });
 ```
