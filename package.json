@@ -1,6 +1,6 @@
 {
   "name": "docbase-js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "DocBase API client",
   "main": "lib/index.js",
   "scripts": {
