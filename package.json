@@ -36,6 +36,7 @@
     "webpack-config": "^4.0.0"
   },
   "dependencies": {
-    "axios": "^0.9.1"
+    "axios": "^0.9.1",
+    "babel-runtime": "^6.6.1"
   }
 }
