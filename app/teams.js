@@ -26,7 +26,7 @@ class Teams extends Resource {
   /**
    * get memos
    */
-  getMemos({q = '*', page = 1, perPage = 20}) {
+  getMemos(q = '*', page = 1, perPage = 20) {
     return this.axios.get(`/teams/${this.domain}/posts`, {q, page, perPage})
   }
 
