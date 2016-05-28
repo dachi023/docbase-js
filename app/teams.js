@@ -36,6 +36,13 @@ class Teams extends Resource {
   postMemo(title, body, {draft = false, notice = true, tags = [], scope = 'everyone', groups = []}) {
     return this.axios.post(`/teams/${this.domain}/posts`, {title, body, draft, notice, tags, scope, groups})
   }
+
+  /**
+   * update memo
+   */
+  updateMemo(id, {title, body, draft = false, notice = true, tags = [], scope = 'everyone', groups = []}) {
+    return this.axios.patch(`/teams/${this.domain}/posts/${id}`, {title, body, draft, notice, tags, scope, groups})
+  }
 }
 
 export default Teams
