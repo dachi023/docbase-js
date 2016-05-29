@@ -1,5 +1,5 @@
 # docbase-js
-DocBase API client for browser and node
+[DocBase](https://docbase.io) API client for browser and node
 
 ## Installation
 
@@ -20,20 +20,18 @@ var docBase = new DocBase({token: 'your-docbase-api-token', domain: 'your-team-d
 ```js
 docBase.teams.getTeams().then(function(response) {
   console.log(response.data);
-}).catch(function(response) {
-  console.log(reponse);
 });
 
 docBase.teams.getGroups().then(function(response) {
   console.log(response.data);
-}).catch(function(response) {
-  console.log(reponse);
 });
 
 docBase.teams.getTags().then(function(response) {
   console.log(response.data);
-}).catch(function(response) {
-  console.log(reponse);
+});
+
+docBase.teams.searchMemo('query', page, perPage).then(function(response) {
+  console.log(response.data.posts, response.data.meta);
 });
 
 docBase.teams.postMemo('title', 'body', {
@@ -44,10 +42,26 @@ docBase.teams.postMemo('title', 'body', {
   groups: []
 }).then(function(response) {
   console.log(response.data);
-}).catch(function(response) {
-  console.log(reponse);
 });
+
+docBase.teams.updateMemo(id, {
+  title: 'title',
+  body: 'body',
+  draft: false,
+  notice: true,
+  tags: [],
+  scope: 'everyone',
+  groups: []
+}).then(function(response) {
+  console.log(response.data);
+});
+
+docBase.teams.deleteMemo(id);
 ```
+
+## Note
+- [axios/README.md](https://github.com/mzabriskie/axios/blob/master/README.md)
+- [DocBase APIドキュメント](https://help.docbase.io/posts/45703)
 
 ## License
 MIT
