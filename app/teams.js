@@ -26,8 +26,8 @@ class Teams extends Resource {
   /**
    * get memos
    */
-  getMemos(q = '*', page = 1, perPage = 20) {
-    return this.axios.get(`/teams/${this.domain}/posts`, {q, page, perPage})
+  searchMemo(q = '*', page = 1, perPage = 20) {
+    return this.axios.get(`/teams/${this.domain}/posts?q=${encodeURIComponent(q)}&page=${page}&per_page=${perPage}`)
   }
 
   /**
@@ -35,6 +35,20 @@ class Teams extends Resource {
    */
   postMemo(title, body, {draft = false, notice = true, tags = [], scope = 'everyone', groups = []}) {
     return this.axios.post(`/teams/${this.domain}/posts`, {title, body, draft, notice, tags, scope, groups})
+  }
+
+  /**
+   * update memo
+   */
+  updateMemo(id, {title, body, draft = false, notice = true, tags, scope, groups}) {
+    return this.axios.patch(`/teams/${this.domain}/posts/${id}`, {title, body, draft, notice, tags, scope, groups})
+  }
+
+  /**
+   * delete memo
+   */
+  deleteMemo(id) {
+    return this.axios.delete(`/teams/${this.domain}/posts/${id}`)
   }
 }
 
