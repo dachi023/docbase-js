@@ -1,19 +1,21 @@
 const path = require('path')
 
 module.exports = {
-  context: path.resolve(__dirname, 'app'),
+  context: path.resolve(__dirname, 'src'),
   entry: [
     './index.js'
   ],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'docbase.js'
+    filename: 'docbase.js',
+    library: 'DocBase',
+    libraryTarget: 'umd'
   },
   module: {
     rules: [
       {
         test: /\.js?$/,
-        include: path.resolve(__dirname, 'app'),
+        include: path.resolve(__dirname, 'src'),
         use: 'babel-loader'
       }
     ]

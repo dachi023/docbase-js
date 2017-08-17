@@ -1,6 +1,6 @@
 import test from 'ava'
 
-import constants from '../app/constants'
+import constants from '../src/constants'
 
 test('get baseUrl', t => {
   const actual = constants.baseUrl

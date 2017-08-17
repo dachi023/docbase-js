@@ -1,13 +1,14 @@
 {
   "name": "docbase-js",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "DocBase API client",
   "main": "lib/index.js",
   "scripts": {
+    "babel": "babel src --out-dir lib",
     "build": "webpack -p --devtool source-map",
-    "flow": "flow check ./app",
-    "lint": "eslint ./app",
-    "prepublish": "npm run build",
+    "flow": "flow check ./src",
+    "lint": "eslint ./src",
+    "prepublish": "npm run babel && npm run build",
     "start": "webpack --devtool eval --watch",
     "test": "ava"
   },
@@ -26,6 +27,7 @@
   "homepage": "https://github.com/dachi023/docbase-js",
   "devDependencies": {
     "ava": "^0.21.0",
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.7.6",
     "babel-eslint": "^7.2.3",
     "babel-loader": "^7.1.1",
@@ -55,7 +57,7 @@
       "babel-register"
     ],
     "source": [
-      "./app/**/*.js"
+      "./src/**/*.js"
     ]
   }
 }
