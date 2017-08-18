@@ -1,9 +1,10 @@
+// @flow
 export default {
-  protocol: 'https',
   host: 'api.docbase.io',
+  protocol: 'https',
+  timeout: 1000,
   version: 1,
-  get baseUrl() {
+  get baseUrl(): string {
     return `${this.protocol}://${this.host}`
-  },
-  timeout: 1000
+  }
 }
