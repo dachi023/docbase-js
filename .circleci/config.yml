@@ -18,4 +18,5 @@ jobs:
             - ~/.cache/yarn/
       - run: yarn run lint
       - run: yarn run flow
+      - run: yarn run babel
       - run: yarn run test
