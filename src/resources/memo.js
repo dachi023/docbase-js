@@ -18,6 +18,10 @@ export default class Memo extends Resource {
     return this.request.delete(`${this.basePath}/${id}`)
   }
 
+  get(id: number | string) {
+    return this.request.get(`${this.basePath}/${id}`)
+  }
+
   patch(id: number | string, { title, body, draft = false, notice = true, tags, scope, groups }: memo = {}) {
     return this.request.patch(`${this.basePath}/posts/${id}`, { title, body, draft, notice, tags, scope, groups })
   }
