@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/docbase-js
     docker:
-      - image: node:8.4
+      - image: node:8.11
     steps:
       - checkout
       - restore_cache:
