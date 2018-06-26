@@ -2,6 +2,9 @@ docbase-js
 [DocBase](https://docbase.io) API client for browser and node
 
 ## Installing
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/dachi023/docbase-js.svg)](https://greenkeeper.io/)
+
 npm:
 ```sh
 $ npm install --save docbase-js
