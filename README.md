@@ -1,4 +1,5 @@
 # docbase-js
+[![CircleCI](https://circleci.com/gh/dachi023/docbase-js.svg?style=svg)](https://circleci.com/gh/dachi023/docbase-js)
 [![Greenkeeper badge](https://badges.greenkeeper.io/dachi023/docbase-js.svg)](https://greenkeeper.io/)
 
 [DocBase](https://docbase.io) API client for browser and node
