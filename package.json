@@ -8,7 +8,6 @@
     "build": "webpack --run-prod --config webpack.config.js --devtool source-map",
     "flow": "flow check ./src",
     "lint": "eslint ./src",
-    "prepublish": "npm run babel && npm run build",
     "start": "webpack --run-dev --config webpack.config.js --watch",
     "test": "ava"
   },
