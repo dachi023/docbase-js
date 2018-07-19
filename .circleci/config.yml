@@ -1,22 +1,48 @@
 version: 2
+
+base_image: &base_image
+  image: circleci/node:8.11
+
+restore_dependencies: &restore_dependencies
+  restore_cache:
+    key: yarn-pacakges-{{ checksum "yarn.lock" }}
+
+save_dependencies: &save_dependencies
+  save_cache:
+    key: yarn-pacakges-{{ checksum "yarn.lock" }}
+    paths:
+      - ~/.cache/yarn
+
+setup: &setup
+  docker:
+    - <<: *base_image
+
 jobs:
   build:
-    working_directory: ~/docbase-js
-    docker:
-      - image: node:8.11
+    <<: *setup
     steps:
       - checkout
-      - restore_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-      - run:
-          name: Install dependencies
-          command: yarn install
-      - save_cache:
-          key: dependency-cache-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/docbase-js/node_modules
-            - ~/.cache/yarn/
+      - <<: *restore_dependencies
+      - run: yarn install
+      - run: yarn run babel
+      - <<: *save_dependencies
+
+  test:
+    <<: *setup
+    steps:
+      - checkout
+      - <<: *restore_dependencies
+      - run: yarn install
+      - run: yarn run babel
       - run: yarn run lint
       - run: yarn run flow
-      - run: yarn run babel
       - run: yarn run test
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build
+      - test:
+          requires:
+            - build
