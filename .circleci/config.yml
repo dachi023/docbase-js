@@ -1,13 +1,10 @@
 version: 2
-
 base_image: &base_image
   image: circleci/node:8.11
-
 setup: &setup
   working_directory: ~/docbase-js
   docker:
     - <<: *base_image
-
 jobs:
   build:
     <<: *setup
@@ -29,7 +26,6 @@ jobs:
           paths:
             - ~/docbase-js/dist
             - ~/docbase-js/lib
-
   test:
     <<: *setup
     steps:
@@ -41,39 +37,11 @@ jobs:
       - run: yarn run lint
       - run: yarn run flow
       - run: yarn run test
-
-  update_lockfile:
-    <<: *setup
-    steps:
-      - checkout
-      - run: sudo yarn global add greenkeeper-lockfile@2
-      - run: greenkeeper-lockfile-update
-      - save_cache:
-          key: autoupdate-lockfile-{{ .Revision }}
-          paths:
-            - .
-            - .git
-            - ~/.ssh
-
-  upload_lockfile:
-    <<: *setup
-    steps:
-      - restore_cache:
-          key: autoupdate-lockfile-{{ .Revision }}
-      - run: sudo yarn global add greenkeeper-lockfile@2
-      - run: greenkeeper-lockfile-upload
-
 workflows:
   version: 2
-  test_and_update_lockfile:
+  build_and_test:
     jobs:
-      - update_lockfile
-      - upload_lockfile:
-          requires:
-            - update_lockfile
-      - build:
-          requires:
-            - update_lockfile
+      - build
       - test:
           requires:
             - build
