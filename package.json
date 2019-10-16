@@ -47,7 +47,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf docs lib",
-    "docs": "typedoc --out docs ./src && touch docs/.nojekyll",
+    "docs": "typedoc --exclude \"**/*.spec.ts\" --out docs src && touch docs/.nojekyll",
     "format": "eslint ./src --ext .ts --fix",
     "lint": "run-p lint:*",
     "lint:eslint": "eslint ./src --ext .ts",
