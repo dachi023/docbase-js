@@ -15,7 +15,7 @@ node_modules
 .npm
 
 # Build directory
-docs
+# docs
 lib
 ### https://raw.github.com/github/gitignore/7b395872200dfdad57902866ca09e7f4c1e85406/Node.gitignore
 
