@@ -1,10 +1,9 @@
 version: 2
-base_image: &base_image
-  image: circleci/node:8.11
 setup: &setup
   working_directory: ~/docbase-js
   docker:
-    - <<: *base_image
+    - image: circleci/node:12
+
 jobs:
   build:
     <<: *setup
@@ -35,13 +34,11 @@ jobs:
       - restore_cache:
           key: artifacts-{{ .Revision }}
       - run: yarn run lint
-      - run: yarn run flow
       - run: yarn run test
+
 workflows:
   version: 2
   build_and_test:
     jobs:
       - build
-      - test:
-          requires:
-            - build
+      - test

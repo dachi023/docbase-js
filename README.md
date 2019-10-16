@@ -1,103 +1,49 @@
 # docbase-js
 [![CircleCI](https://circleci.com/gh/dachi023/docbase-js.svg?style=svg)](https://circleci.com/gh/dachi023/docbase-js)
-[![Greenkeeper badge](https://badges.greenkeeper.io/dachi023/docbase-js.svg)](https://greenkeeper.io/)
 
-[DocBase](https://docbase.io) API client for browser and node
+API client for [DocBase](https://docbase.io) built with TypeScript
 
-## Installing
-
+## Installation
 
 npm:
-```sh
+```bash
 $ npm install --save docbase-js
 ```
 
 yarn:
-```sh
+```bash
 $ yarn add docbase-js
 ```
 
-## Example
-Using [mzabriskie/axios](https://github.com/mzabriskie/axios)
+## Usage
 
 ### Initialize
-#### `new DocBase(domain, token, [{ baseUrl, timeout, version }])`
-```js
-import DocBase from 'docbase-js'
 
-const docBase = new DocBase(
-  'your_team_domain',
-  'your_docbase_api_token',
-  {
-    baseUrl: 'https://api.docbase.io',
-    timeout: 1000,
-    version: 1
-  }
-)
-```
-
-### Team
-#### [`docBase.team.teams()`](https://help.docbase.io/posts/92977)
 ```js
-const teams = await docBase.team.teams()
-console.log(teams.data)
-```
+import docbase from 'docbase-js'
 
-#### [`docBase.team.groups()`](https://help.docbase.io/posts/92978)
-```js
-const groups = await docBase.team.groups()
-console.log(groups.data)
-```
+const { comment, group, post, tag, team, user } = docbase({
+  /* Required */
+  domain: 'your-team-domain',
+  token: 'YourAccessToken123',
 
-#### [`docBase.team.tags()`](https://help.docbase.io/posts/92979)
-```js
-const tags = await docBase.team.tags()
-console.log(tags.data)
-```
-
-### Memo
-#### [`docBase.memo.post({ title, body, [draft, notice, tags, scope, groups] })`](https://help.docbase.io/posts/92980)
-```js
-const memo = await docBase.memo.post({
-  title: 'title',
-  body: 'body',
-  draft: false,
-  notice: true,
-  tags: [],
-  scope: 'everyone',
-  groups: []
+  /* Optional */
+  baseUrl: 'https://api.docbase.io',
+  timeout: 3000,
+  version: 2
 })
-console.log(memo.data)
 ```
 
-#### [`docBase.memo.get(id)`](https://help.docbase.io/posts/97204)
+### Call API
 ```js
-const memo = await docBase.memo.get(1)
-console.log(memo.data)
+import docbase from 'docbase-js'
+
+const { team } = docbase({ domain: 'your-team-domain', token: 'YourAccessToken123' })
+const { data } = await team.list()
 ```
 
-#### [`docBase.memo.patch(id, { title, body, [draft, notice, tags, scope, groups] })`](https://help.docbase.io/posts/92981)
-```js
-const memo = await docBase.memo.patch(1, {
-  title: 'title',
-  body: 'body',
-  draft: false,
-  notice: true,
-  tags: [],
-  scope: 'everyone',
-  groups: []
-})
-console.log(memo.data)
-```
-
-#### [`docBase.memo.delete(id)`](https://help.docbase.io/posts/92982)
-```js
-docBase.memo.delete(1)
-```
-
-## Note
-- [axios/README.md](https://github.com/mzabriskie/axios/blob/master/README.md)
+## Links
 - [DocBase APIドキュメント](https://help.docbase.io/posts/45703)
 
 ## License
-MIT
+[MIT](https://github.com/dachi023/docbase-js/blob/master/LICENSE)
