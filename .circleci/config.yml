@@ -30,7 +30,7 @@ jobs:
       - restore_cache:
           key: artifacts-{{ .Revision }}
       - run: yarn run lint
-      - run: yarn run test
+      - run: yarn run run-s "test --collect-coverage" coverage
 
 workflows:
   version: 2

@@ -28,6 +28,7 @@
     "@types/node": "^12.7.12",
     "@typescript-eslint/eslint-plugin": "^2.3.3",
     "@typescript-eslint/parser": "^2.3.3",
+    "codecov": "^3.6.1",
     "eslint": "^6.5.1",
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-import": "^2.18.2",
@@ -46,7 +47,8 @@
   },
   "scripts": {
     "build": "tsc",
-    "clean": "rimraf docs lib",
+    "clean": "rimraf coverage docs lib",
+    "coverage": "codecov",
     "docs": "typedoc --exclude \"**/*.spec.ts\" --out docs src && touch docs/.nojekyll",
     "format": "eslint ./src --ext .ts --fix",
     "lint": "run-p lint:*",
