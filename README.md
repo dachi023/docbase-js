@@ -1,7 +1,7 @@
 # [docbase-js](https://dachi.work/docbase-js)
 
 [![npm](https://img.shields.io/npm/v/docbase-js?style=flat-square)](https://www.npmjs.com/package/docbase-js)
-[![npm bundle size](https://img.shields.io/bundlephobia/min/docbase-js?style=flat-square)]()
+[![npm bundle size](https://img.shields.io/bundlephobia/min/docbase-js?style=flat-square)](https://www.npmjs.com/package/docbase-js)
 [![build](https://img.shields.io/circleci/build/github/dachi023/docbase-js?logo=circleci&style=flat-square)](https://circleci.com/gh/dachi023/docbase-js)
 [![coverage](https://img.shields.io/codecov/c/github/dachi023/docbase-js?logo=codecov&style=flat-square)](https://codecov.io/gh/dachi023/docbase-js)
 [![license](https://img.shields.io/npm/l/docbase-js?style=flat-square)](https://github.com/dachi023/docbase-js/blob/master/LICENSE)
